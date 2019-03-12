@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Songify Redis Site</title>
+</head>
+
+<body onload="onLoad()">
+    <h3>Songify</h3>
+    <audio id="audio" controls>
+        <source type="audio/ogg">
+    </audio>
+
+</body>
+
+</html>
+
+<script>
+    function onLoad() {
+        const json = { 'artist': 'Forget One Thing', 'album': 'The Breeze', 'song': 'Profile Picture' }
+
+        const request = new XMLHttpRequest();
+        const url = 'http://52.90.28.219:443/play'
+        request.open("POST", url);
+        var reply = request.send(json);
+        request.onreadystatechange = (e) => {
+            //console.log(Http.responseText)
+
+            document.getElementById('audio').src = Http.responseText;
+        }
+    }
+
+</script>
